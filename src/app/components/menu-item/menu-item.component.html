@@ -1,0 +1,22 @@
+<app-flyout
+    [target]="target"
+    (click)="click()"
+    (startFly)="startFly($event)"
+    (changeFlyout)="changeFlyout($event)"
+>
+    <div
+        #flyout
+        class="{{ className }}"
+        [ngClass]="{'fly-outed': isFlyOut, 'fly-out': inFlyOut && flyDirection, 'fly-in': inFlyOut && !flyDirection }"
+    >
+        <div
+            *ngIf="!isFlyOut"
+            class="text"
+        >
+            <ng-content></ng-content>
+        </div>
+        <ng-container *ngIf="flyOuted">
+            <router-outlet></router-outlet>
+        </ng-container>
+    </div>
+</app-flyout>

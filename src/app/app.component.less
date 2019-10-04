@@ -1,0 +1,153 @@
+@import './shared/variables.less';
+@import './shared/layout.less';
+
+::ng-deep {
+    @import './shared/theme.less';
+    @import './shared/domain.data.less';
+
+    .catalog-item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &_layout {
+            position: relative;
+            width: 30vw;
+            height: 30vh;
+            min-height: 18vw;
+            max-height: 20vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            padding: 30px;
+            overflow: hidden;
+            border-radius: 20px;
+            font-size: 5vw;
+            color: white;
+            cursor: pointer;
+            transition: left 0.5s, top 0.5s, width 0.5s, height 0.5s, opacity 0.5s, transform 0.5s, background-color .5s;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform-origin: center center;
+            filter: grayscale();
+            opacity: 0.7;
+
+            &:hover {
+                z-index: 1;
+                box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.67);
+                filter: none;
+                opacity: 1;
+            }
+
+            &.people-catalog {
+                background-color: rgb(27, 60, 172);
+                background-image: url('/assets/items/people.png');
+                transform: rotate(15deg) translate(1vw, 5vh);
+            }
+
+            &.planets-catalog {
+                background-image: url('/assets/items/planets.png');
+                background-color: rgb(125, 173, 92);
+                transform: rotate(-3deg) translate(-11vw, 3vh);
+            }
+
+            &.starships-catalog {
+                background-image: url('/assets/items/starships.png');
+                background-color: rgb(252, 214, 0);
+                transform: rotate(-5deg) translate(6vw, -3vh);
+            }
+
+            &.vehicles-catalog {
+                background-image: url('/assets/items/vehicles.png');
+                background-color: rgb(136, 26, 158);
+                transform: rotate(10deg) translate(-12vw, 0vh)
+            }
+        }
+    }
+
+}
+
+.container {
+    display: grid;
+    grid-template-rows: minmax(112px, 150px) 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    background-color: rgba(1, 1, 27, 0.6);
+    overflow: hidden;
+
+    grid-template-areas:
+        "header header"
+        "cat1 cat2"
+        "cat3 cat4";
+
+    .header {
+        grid-area: header;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        z-index: 100;
+
+        .logo {
+            font-size: 5vh;
+            margin-bottom: 0;
+            position: relative;
+            z-index: 100;
+            width: 500px;
+            flex-grow: 1;
+            min-height: 80px;
+            margin-top: 10px;
+            background: url('/assets/logo.png') no-repeat 50%;
+            background-size: contain;
+            cursor: pointer;
+        }
+
+        .hint {
+            font-size: 14px;
+            position: relative;
+            z-index: 100;
+        }
+
+        ::ng-deep {
+            .catalog-item {
+                &_layout {
+                    position: absolute;
+                    max-height: none;
+                    z-index: 10;
+                    filter: none;
+                    opacity: 1;
+                    cursor: initial;
+
+                    &.fly-outed {
+                        padding-top: 100px;
+                        font-size: inherit;
+                        display: block;
+                        text-align: initial;
+                    }
+
+                    &.starships-catalog {
+                        background-color: #504a02;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.item-content {
+    position: absolute;
+    z-index: 100;
+    width: 90vw;
+    height: 90vh;
+    left: 5vw;
+    top: 5vh;
+    pointer-events: none;
+    padding: 30px;
+
+    * {
+        pointer-events: all;
+    }
+}

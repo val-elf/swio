@@ -1,0 +1,91 @@
+<ng-container *ngIf="mode==='short'">
+    <div
+        class="userpic person"
+        [routerLink]="['/people', person.url]"
+        [ngClass]="'person-' + person.url"
+    ></div>
+    <div class="info">
+        <div
+            class="person-name"
+            [routerLink]="['/people', person.url]"
+        >
+            {{ person.name }}
+        </div>
+        <div class="specie">
+            ({{ species && species.length ? species[0].name : species && species.length === 0 ? 'undefined' : '...'}})
+        </div>
+    </div>
+</ng-container>
+<ng-container *ngIf="mode === 'detailed' && person">
+    <h1 mat-dialog-title>{{ person.name }}</h1>
+    <mat-dialog-content class="info">
+        <div
+            class="userpic person title"
+            [ngClass]="'person-' + person.url"
+        ></div>
+        <div class="bio">
+            <div class="label">Species</div>
+            <div class="value">
+                {{ person.race ? person.race.name : 'unknown' }}
+            </div>
+            <div class="label">Date of Birth</div>
+            <div class="value">{{ person.birthYear}}</div>
+            <div class="label">Gender</div>
+            <div class="value">{{ person.gender || 'unknown' }}</div>
+            <div class="label">Height</div>
+            <div class="value">{{ person.height || 'unknown' }}</div>
+            <div class="label">Mass</div>
+            <div class="value">{{ person.mass || 'unknown' }}</div>
+            <div class="label">Eye color</div>
+            <div class="value">{{ person.eyeColor || 'unknown' }}</div>
+            <div class="label">Skin color</div>
+            <div class="value">{{ person.skinColor || 'unknown' }}</div>
+            <div class="label">Homeworld</div>
+            <div class="value planet">
+                <ng-container *ngIf="planet">
+                    <div
+                        class="userpic planet"
+                        [ngClass]="'planet-' + planet.url"
+                    ></div>
+                    {{ planet.name }}
+                </ng-container>
+                <ng-container *ngIf="!planet">...</ng-container>
+            </div>
+        </div>
+        <div
+            *ngIf="homeworld | async"
+            class="countrymen"
+        >
+            <h2>Another people from {{ homeworldName }}</h2>
+            <ng-container *ngIf="acountrymen | async">
+                <div
+                    slimScroll
+                    class="grid"
+                    *ngIf="countrymen.length"
+                >
+                    <div
+                        *ngFor="let countryman of countrymen"
+                        class="countryman"
+                    >
+                        <div
+                            class="userpic person"
+                            [ngClass]="'person-' + countryman.url"
+                            [routerLink]="['/people', countryman.url]"
+                        ></div>
+                        <div
+                            class="name"
+                            [routerLink]="['/people', countryman.url]"
+                        >
+                            {{ countryman.name }}
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="!countrymen.length">No contrymen for {{ person.name }}</div>
+            </ng-container>
+            <mat-spinner
+                class="spinner"
+                *ngIf="!(acountrymen | async)"
+            ></mat-spinner>
+        </div>
+    </mat-dialog-content>
+</ng-container>

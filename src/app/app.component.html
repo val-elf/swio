@@ -1,0 +1,26 @@
+<div class="container">
+    <div
+        class="header"
+        #header
+    >
+        <div
+            class="logo"
+            (click)="go('')"
+        ></div>
+        <span class="hint">Inquiry Office</span>
+    </div>
+    <div
+        class="catalog-item"
+        *ngFor="let type of types"
+    >
+        <app-menu-item
+            [target]="header"
+            (menuClick)="go($event)"
+            className="catalog-item_layout {{ type }}-catalog"
+            [routeName]="type"
+            [active]="currentUrl && currentUrl.startsWith('/' + type)"
+        >
+            {{ type }}!
+        </app-menu-item>
+    </div>
+</div>

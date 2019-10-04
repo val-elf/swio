@@ -1,0 +1,82 @@
+@import '../../shared/variables.less';
+
+:host {
+    height: 90px;
+    position: relative;
+    padding-left: 5px;
+    display: block;
+
+    &.short {
+        display: flex;
+    }
+
+    &.detailed {
+        height: auto;
+
+        .userpic.title {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+            margin-right: 2em;
+        }
+
+        .info {
+            display: flex;
+
+            .label {
+                color: @base-color;
+                font-size: 12px;
+            }
+
+            .bio {
+                width: 300px;
+            }
+
+            .value {
+                margin-bottom: 1em;
+
+                &.planet {
+                    display: flex;
+                }
+            }
+        }
+
+        .countrymen {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+
+            h2 {
+                margin-top: 0;
+                white-space: nowrap;
+            }
+
+            .grid {
+                max-height: 350px;
+                padding-left: 5px;
+                padding-top: 5px;
+
+                display: grid;
+                grid-gap: 1vw;
+                grid-template-columns: repeat(auto-fill, minmax(100px, 200px));
+                grid-template-rows: repeat(auto-fill, min(50px));
+            }
+
+            .countryman {
+                display: flex;
+            }
+        }
+    }
+}
+
+
+.person-name {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.specie {
+    font-size: 12px;
+    color: @base-color;
+}
