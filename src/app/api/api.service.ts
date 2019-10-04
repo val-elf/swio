@@ -115,7 +115,7 @@ export class Api {
         private http: HttpClient
     ) { }
 
-    private base = 'api/';
+    private base = 'https://swapi.co/api/';
 
     private prepareOptions(options: { [key: string]: string | null | undefined }) {
         const res = {};
