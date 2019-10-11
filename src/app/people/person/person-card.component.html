@@ -84,7 +84,7 @@
             </ng-container>
             <mat-spinner
                 class="spinner"
-                *ngIf="!(acountrymen | async)"
+                *ngIf="(acountrymen | async) === null"
             ></mat-spinner>
         </div>
     </mat-dialog-content>

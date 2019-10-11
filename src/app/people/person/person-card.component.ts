@@ -12,34 +12,6 @@ interface PersonData {
 }
 
 @Component({
-    selector: 'app-person-card',
-    templateUrl: './person-card.component.html',
-    styleUrls: ['./person-card.component.less']
-})
-export class PersonCardComponent implements OnInit {
-    @Input() person: IPerson;
-    @HostBinding('class') mode = 'short';
-
-    species: ISpecie[];
-
-    constructor(
-        private speciesService: SpeciesService,
-        public dialog: MatDialog,
-    ) { }
-
-    async ngOnInit() {
-        this.species = await Promise.all(this.person.species.map((specieId: number) => this.speciesService.getSpecie(specieId)));
-        this.person.race = this.species && this.species.length ? this.species[0] : null;
-    }
-
-    showDetailed() {
-        this.dialog.open(PersonCardDetailsComponent, {
-            data: { person: this.person }
-        });
-    }
-}
-
-@Component({
     selector: 'app-person-details',
     templateUrl: './person-card.component.html',
     styleUrls: ['./person-card.component.less']
@@ -84,5 +56,33 @@ export class PersonCardDetailsComponent {
             return this.countrymen;
         })();
         return this.countrymenLoad;
+    }
+}
+
+@Component({
+    selector: 'app-person-card',
+    templateUrl: './person-card.component.html',
+    styleUrls: ['./person-card.component.less']
+})
+export class PersonCardComponent implements OnInit {
+    @Input() person: IPerson;
+    @HostBinding('class') mode = 'short';
+
+    species: ISpecie[];
+
+    constructor(
+        private speciesService: SpeciesService,
+        public dialog: MatDialog,
+    ) { }
+
+    async ngOnInit() {
+        this.species = await Promise.all(this.person.species.map((specieId: number) => this.speciesService.getSpecie(specieId)));
+        this.person.race = this.species && this.species.length ? this.species[0] : null;
+    }
+
+    showDetailed() {
+        this.dialog.open(PersonCardDetailsComponent, {
+            data: { person: this.person }
+        });
     }
 }
