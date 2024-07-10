@@ -1,0 +1,110 @@
+@import './variables.scss';
+
+::ng-deep {
+    body {
+        font-family: 'Verdana';
+        background: url('/assets/back.jpg') no-repeat;
+        background-size: cover;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    h1 {
+        color: $base-color;
+        text-shadow: 0 0 5px rgba(0, 0, 10, 0.6);
+    }
+
+    h2,
+    h3,
+    h4,
+    h5 {
+        color: white;
+    }
+
+    .table-grid {
+        display: grid;
+        grid-gap: 1vw;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 300px));
+        grid-template-rows: repeat(auto-fill, min(80px));
+    }
+
+    .scroller {
+        height: 100%;
+        position: relative;
+
+        &.scroller-over {
+            .scroller-port {
+                opacity: 1;
+            }
+        }
+
+        .scrollbar-container {
+            height: 100%;
+            overflow: auto;
+            -ms-overflow-style: none; // IE 10+
+            scrollbar-width: none; // Firefox
+            position: relative;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        .scroller-port {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: white;
+            border-radius: 2px;
+            box-shadow: 0 0 10px 1px rgb(0, 0, 255), 0 0 3px 1px white;
+            opacity: 0;
+            transition: opacity .5s;
+
+            &_slider {
+                background: rgb(146, 148, 151);
+                background: linear-gradient(to right,
+                        rgb(161, 161, 161) 0%,
+                        rgb(226, 226, 226) 12%,
+                        rgb(156, 155, 155) 25%,
+                        rgb(139, 139, 139) 39%,
+                        rgb(100, 100, 100) 50%,
+                        rgb(70, 69, 69) 51%,
+                        rgb(49, 49, 49) 60%,
+                        rgb(61, 61, 61) 76%,
+                        rgb(88, 88, 88) 91%,
+                        rgb(151, 149, 149) 100%);
+                position: absolute;
+                //height: 20px;
+                bottom: -20px;
+                width: 8px;
+                border-radius: 50px;
+                background-color: white;
+                left: -3px;
+                box-shadow: 0 0 3px rgba(0, 0, 10, 0.6);
+                transform: translateY(-10px);
+            }
+        }
+    }
+
+    .mat-dialog-container {
+        h1 {
+            margin-top: 0;
+        }
+    }
+
+    .userpic {
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 20, 0.5);
+        display: inline-block;
+        flex-shrink: 0;
+    }
+}

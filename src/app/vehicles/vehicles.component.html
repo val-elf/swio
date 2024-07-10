@@ -1,0 +1,51 @@
+<div class="page-head">
+    <h1>VEHICLES on the road</h1>
+    <div class="service-line">
+        <div class="service-line_item">
+            <mat-form-field>
+                <mat-label>Sort By</mat-label>
+                <mat-select (valueChange)="changeSort($event)">
+                    <mat-option value="name">Name</mat-option>
+                    <mat-option value="maxAtmospheringSpeed">Top speed</mat-option>
+                    <mat-option value="costInCredits">Cost</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="service-line_item">
+            <mat-form-field class="full-width">
+                <mat-icon matPrefix>search</mat-icon>
+                <input
+                    type="search"
+                    matInput
+                    placeholder="Look up the fastest device!"
+                    [(ngModel)]="searchString"
+                    (change)="goSearch()"
+                >
+                <button
+                    mat-button
+                    *ngIf="searchString"
+                    matSuffix
+                    mat-icon-button
+                    aria-label="Clear"
+                    (click)="clearSearch()"
+                >
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+<div
+    class="table-grid"
+    slimScroll
+    (reachEnd)="loadNext()"
+>
+    <app-vehicle-card
+        *ngFor="let vehicle of vehicles"
+        [vehicle]="vehicle"
+    ></app-vehicle-card>
+</div>
+<mat-spinner
+    class="spinner"
+    *ngIf="loading"
+></mat-spinner>

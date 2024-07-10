@@ -1,0 +1,46 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+
+    ::ng-deep {
+        .scroller .scroller-port {
+            box-shadow: 0 0 10px 1px rgb(6, 252, 26), 0 0 3px 1px white;
+        }
+    }
+}
+
+.spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+}
+
+.page-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    .service-line {
+        margin-left: 20px;
+        flex-grow: 1;
+        text-align: left;
+        display: flex;
+        justify-content: stretch;
+
+        &_item {
+            margin-right: 1em;
+        }
+
+        &_item:last-child {
+            flex-grow: 1;
+        }
+    }
+
+    .full-width {
+        width: 100%;
+    }
+}
