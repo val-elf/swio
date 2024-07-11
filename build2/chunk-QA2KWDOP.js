@@ -1,0 +1,1 @@
+import{a,b,c,d,e,f,g,h,i,j,k}from"./chunk-7UOY3SAS.js";import"./chunk-FP7EQKGB.js";export{h as ARCANE_WORDS,j as FOUNDED_STORY,f as GAMES_BE_MORE,i as HISTORY_OF_CREATION,a as NAVIGATION_HISTORY,b as NAVIGATION_NEWS,d as NAVIGATION_PROJECT,c as NAVIGATION_TEAM,e as NAVIGATION_TRY_DEMO,g as WE_ARE_NEW_WORLD,k as default};
